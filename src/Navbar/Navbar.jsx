@@ -113,8 +113,8 @@ const Navbar = () => {
         <div className="navbar-end">
           {user ? (
             <div className="flex items-center justify-center gap-2">
-              <p className="text-white">{user.displayName}</p>
-              <img className="w-10 rounded-full" src={user.photoURL} alt="" />
+              <p className="text-green-800">{user.displayName}</p>
+              <img className="w-8 rounded-full" src={user.photoURL} alt="" />
             </div>
           ) : (
             <img className="w-10 rounded-full" src={userDefault} />
@@ -124,14 +124,15 @@ const Navbar = () => {
               Logout
             </button>
           ) : (
-            <Link to="/login">
-              <button className="px-2 text-lg font-semibold">Login</button>
-            </Link>
+            <div>
+              <Link to="/login">
+                <button className="px-2 text-lg font-semibold">Login</button>
+              </Link>
+              <Link>
+                <button className="text-lg pl-2 font-semibold">Register</button>
+              </Link>
+            </div>
           )}
-          /
-          <Link>
-            <button className="text-lg pl-2 font-semibold">Register</button>
-          </Link>
         </div>
       </div>
     </div>
