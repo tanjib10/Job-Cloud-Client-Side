@@ -57,7 +57,6 @@ const Footer = () => {
           <a className="link link-hover">Advertisement</a>
         </nav>
       </footer>
-      ;
     </div>
   );
 };

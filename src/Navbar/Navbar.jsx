@@ -102,8 +102,11 @@ const Navbar = () => {
               {navLink}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-2xl">
-            <img className="w-12 rounded-full" src={logo} alt="" />
+          <Link
+            to="/"
+            className="btn btn-ghost normal-case text-sm lg:text-2xl"
+          >
+            <img className="w-10 lg:w-12 rounded-full" src={logo} alt="" />
             Job Cloud
           </Link>
         </div>
@@ -120,16 +123,24 @@ const Navbar = () => {
             <img className="w-10 rounded-full" src={userDefault} />
           )}
           {user ? (
-            <button onClick={handleSignOut} className="text-lg font-semibold">
+            <button
+              onClick={handleSignOut}
+              className="pl-2 btn-ghost text-sm lg:text-lg font-semibold"
+            >
               Logout
             </button>
           ) : (
             <div>
               <Link to="/login">
-                <button className="px-2 text-lg font-semibold">Login</button>
-              </Link>
-              <Link>
-                <button className="text-lg pl-2 font-semibold">Register</button>
+                <button className="px-2 text-sm lg:text-lg font-semibold">
+                  Login
+                </button>
+              </Link>{" "}
+              /
+              <Link to="/register">
+                <button className="text-sm lg:text-lg pl-2 font-semibold">
+                  Register
+                </button>
               </Link>
             </div>
           )}

@@ -56,6 +56,7 @@ const Login = () => {
   };
   return (
     <div className="my-16" data-aos="fade-up">
+      <h3 className="text-center text-2xl font-bold mb-4">Please Login Here</h3>
       <div className="hero min-h-screen">
         <div className="flex justify-between">
           <div className="w-1/2">
@@ -99,7 +100,7 @@ const Login = () => {
                   Google
                 </button>
               </div>
-              <p className="mt-2">
+              <p className="mt-2 text-sm lg:text-base">
                 Do not have an account?{" "}
                 <Link className="text-blue-500" to="/register">
                   Register here.
