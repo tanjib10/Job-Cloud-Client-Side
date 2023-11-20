@@ -26,11 +26,7 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive, isPending }) =>
-            isPending
-              ? "pending text-xl"
-              : isActive
-              ? "active text-xl underline"
-              : ""
+            isPending ? "pending" : isActive ? "active underline" : ""
           }
         >
           Home
@@ -40,28 +36,40 @@ const Navbar = () => {
         <NavLink
           to="/addProduct"
           className={({ isActive, isPending }) =>
-            isPending
-              ? "pending text-xl"
-              : isActive
-              ? "active text-xl  underline"
-              : ""
+            isPending ? "pending" : isActive ? "active underline" : ""
           }
         >
-          Add Product
+          Add Job
         </NavLink>
       </li>
       <li>
         <NavLink
           to="/myCart"
           className={({ isActive, isPending }) =>
-            isPending
-              ? "pending text-xl"
-              : isActive
-              ? "active text-xl  underline"
-              : ""
+            isPending ? "pending" : isActive ? "active underline" : ""
           }
         >
-          My Cart
+          My Posted Jobs
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/myCart"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active underline" : ""
+          }
+        >
+          My Bids
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/myCart"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active underline" : ""
+          }
+        >
+          Bid Requests
         </NavLink>
       </li>
     </>
@@ -95,37 +103,35 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/" className="btn btn-ghost normal-case text-2xl">
-            <img className="w-8 rounded-full" src={logo} alt="" />
+            <img className="w-12 rounded-full" src={logo} alt="" />
             Job Cloud
           </Link>
         </div>
         <div className="text-xl navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1  ">{navLink}</ul>
+          <ul className="menu menu-horizontal px-1">{navLink}</ul>
         </div>
         <div className="navbar-end">
           {user ? (
             <div className="flex items-center justify-center gap-2">
               <p className="text-white">{user.displayName}</p>
-              <img className="w-8" src={user.photoURL} alt="" />
+              <img className="w-10 rounded-full" src={user.photoURL} alt="" />
             </div>
           ) : (
-            <img className="w-8" src={userDefault} alt="" />
+            <img className="w-10 rounded-full" src={userDefault} />
           )}
-
           {user ? (
-            <button
-              onClick={handleSignOut}
-              className="text-xl font-semibold btn btn-ghost"
-            >
+            <button onClick={handleSignOut} className="text-lg font-semibold">
               Logout
             </button>
           ) : (
             <Link to="/login">
-              <button className="text-xl font-semibold btn btn-ghost ">
-                Login
-              </button>
+              <button className="px-2 text-lg font-semibold">Login</button>
             </Link>
           )}
+          /
+          <Link>
+            <button className="text-lg pl-2 font-semibold">Register</button>
+          </Link>
         </div>
       </div>
     </div>
