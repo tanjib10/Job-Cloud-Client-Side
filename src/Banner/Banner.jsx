@@ -1,6 +1,5 @@
 import slider2 from "../assets/group-people-working-out-business-plan-office (2).jpg";
 import slider3 from "../assets/bussiness-people-working-team-office.jpg";
-
 import { Pagination, Autoplay, EffectFade } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/autoplay";
