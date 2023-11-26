@@ -14,11 +14,18 @@ const JobsTab = ({ category }) => {
   }, [category]);
 
   return (
-    <div>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 ml-4 lg:ml-10">
       {jobs.map((job) => (
-        <div key={job._id}>
-          <h3>{job.title}</h3>
-          <p>{job.description}</p>
+        <div className="" key={job._id}>
+          <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card-body">
+              <h2 className="card-title">Card title!</h2>
+              <p>If a dog chews shoes whose shoes does he choose?</p>
+              <div className="card-actions justify-end">
+                <button className="btn btn-primary">Buy Now</button>
+              </div>
+            </div>
+          </div>
         </div>
       ))}
     </div>
