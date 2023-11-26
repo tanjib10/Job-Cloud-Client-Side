@@ -19,11 +19,12 @@ const JobsTab = ({ category }) => {
         <div className="" key={job._id}>
           <div className="card w-96 h-80 border-b-2">
             <div className="card-body">
-              <h2 className="card-title text-[#86A789]">{job.jobTitle}</h2>
+              <h2 className="card-title text-center text-[#86A789]">
+                {job.jobTitle}
+              </h2>
               <p className="text-center">Deadline: {job.deadline}</p>
               <p className="text-center">Salary: {job.priceRange}</p>
               <p className="text-ellipsis text-sm">{job.shortDescription}</p>
-
               <div className="card-actions justify-evenly">
                 <button className="btn btn-primary">Bid Now</button>
               </div>
