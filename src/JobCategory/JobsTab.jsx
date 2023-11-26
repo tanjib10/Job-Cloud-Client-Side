@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 // eslint-disable-next-line react/prop-types
 const JobsTab = ({ category }) => {
   const [jobs, setJobs] = useState([]);
@@ -25,9 +26,9 @@ const JobsTab = ({ category }) => {
               <p className="text-center">Deadline: {job.deadline}</p>
               <p className="text-center">Salary: {job.priceRange}</p>
               <p className="text-ellipsis text-sm">{job.shortDescription}</p>
-              <div className="card-actions justify-evenly">
-                <button className="btn btn-primary">Bid Now</button>
-              </div>
+              <Link to={`/job/details/${job._id}`}>
+                <button className="btn text-white bg-[#B2C8BA]">Bid Now</button>
+              </Link>
             </div>
           </div>
         </div>

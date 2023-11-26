@@ -8,7 +8,7 @@ import {
   signOut,
 } from "firebase/auth";
 import app from "../Firebase/firebase.config";
-export const AuthContext = createContext(null);
+export const AuthContext = createContext({});
 const auth = getAuth(app);
 // const provider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
