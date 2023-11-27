@@ -15,7 +15,7 @@ const JobsTab = ({ category }) => {
   }, [category]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 ml-4 lg:ml-20">
+    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10 ml-4 md:ml-52 lg:ml-20">
       {jobs.map((job) => (
         <div className="" key={job._id}>
           <div className="card w-96 h-80 border-b-2">

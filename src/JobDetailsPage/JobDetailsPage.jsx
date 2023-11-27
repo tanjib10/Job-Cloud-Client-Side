@@ -51,7 +51,7 @@ const JobDetails = () => {
   }, [id]);
 
   return (
-    <div className="max-w-5xl mx-auto text-center">
+    <div className="max-w-5xl mx-auto my-8 text-center">
       <div className="text-[#86A789]">
         <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl my-6 md:my-8 lg:my-12">
           Job Details
