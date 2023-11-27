@@ -13,6 +13,7 @@ import MyBids from "./MyBids/MyBids.jsx";
 import { ToastContainer } from "react-toastify";
 import AddJob from "./AddJob/AddJob.jsx";
 import PostedJobs from "./PostedJobs/PostedJobs.jsx";
+import UpdateJobForm from "./PostedJobs/UpdateJobForm.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/myPostedJobs",
         element: <PostedJobs></PostedJobs>,
+      },
+      {
+        path: "/updateJob/:jobId",
+        element: <UpdateJobForm></UpdateJobForm>,
       },
       {
         path: "/login",

@@ -66,7 +66,7 @@ const AddJob = () => {
             type="text"
             readOnly
             value={user?.email}
-          />{" "}
+          />
         </div>
         <div className="mb-4">
           <label className="block text-gray-700">Job Title:</label>
@@ -144,7 +144,10 @@ const AddJob = () => {
             }
           />
         </div>
-        <button className="btn mt-4 w-full" type="submit">
+        <button
+          className="btn mt-4 w-full bg-[#86A789] text-white p-2 rounded-md"
+          type="submit"
+        >
           Add Job
         </button>
       </form>
