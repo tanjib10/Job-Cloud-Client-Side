@@ -9,6 +9,8 @@ import AuthProvider from "./Providers/AuthProvider.jsx";
 import Login from "./Login/Login.jsx";
 import Register from "./Register/Register.jsx";
 import JobDetailsPage from "./JobDetailsPage/JobDetailsPage.jsx";
+import MyBids from "./MyBids/MyBids.jsx";
+import { ToastContainer } from "react-toastify";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,12 +33,17 @@ const router = createBrowserRouter([
         path: "/job/details/:id",
         element: <JobDetailsPage></JobDetailsPage>,
       },
+      {
+        path: "/myBids",
+        element: <MyBids></MyBids>,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <ToastContainer></ToastContainer>
     <AuthProvider>
       <RouterProvider router={router} />
     </AuthProvider>

@@ -1,9 +1,10 @@
 import { AuthContext } from "../Providers/AuthProvider";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext } from "react";
+// import { Toast } from "react-toastify/dist/components";
 
 const JobDetails = () => {
   const { id } = useParams();
@@ -23,22 +24,40 @@ const JobDetails = () => {
     deadline: "",
   });
 
-  const handleBidSubmit = async () => {
-    const response = await fetch(`http://localhost:5000/bid/${id}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ...bidData,
-        bidderEmail: user.email,
-      }),
-    });
+  const handleBidSubmit = async (e) => {
+    e.preventDefault();
+    console.log("submitted");
+    try {
+      if (user && user.email) {
+        const response = await fetch(`http://localhost:5000/bid/${id}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...bidData,
+            bidderEmail: user.email,
+          }),
+        });
 
-    // eslint-disable-next-line no-unused-vars
-    const result = await response.json();
-    toast("Bid placed successfully!");
-    navigate.push("/my-bids");
+        if (response.ok) {
+          console.log("working");
+          // eslint-disable-next-line no-unused-vars
+          const result = await response.json();
+          toast.success("Bid placed successfully!");
+          navigate("/myBids");
+        } else {
+          console.error("not working");
+          const errorData = await response.json();
+          toast.error(`Bid placement failed: ${errorData.message}`);
+        }
+      } else {
+        console.error("User object or email is null/undefined.");
+      }
+    } catch (error) {
+      console.error("An error occurred during bid submission:", error);
+      toast.error("An error occurred during bid submission.");
+    }
   };
 
   useEffect(() => {
@@ -111,7 +130,7 @@ const JobDetails = () => {
               className="input input-bordered w-full max-w-xs"
               type="text"
               readOnly
-              value={user.email}
+              value={user?.email}
             />
           </div>
           <div className="mb-4">
@@ -128,13 +147,11 @@ const JobDetails = () => {
         <button
           className="btn mt-4 w-full"
           type="submit"
-          disabled={user.email === jobDetails.ownerEmail}
+          disabled={user?.email === jobDetails.ownerEmail}
         >
           Bid on the project
         </button>
       </form>
-
-      <ToastContainer />
     </div>
   );
 };
