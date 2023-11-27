@@ -14,6 +14,7 @@ import { ToastContainer } from "react-toastify";
 import AddJob from "./AddJob/AddJob.jsx";
 import PostedJobs from "./PostedJobs/PostedJobs.jsx";
 import UpdateJobForm from "./PostedJobs/UpdateJobForm.jsx";
+import BidRequests from "./BidRequests/BidRequests.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/myBids",
         element: <MyBids></MyBids>,
+      },
+      {
+        path: "/bidRequests",
+        element: <BidRequests></BidRequests>,
       },
       {
         path: "/login",
