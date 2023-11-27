@@ -37,6 +37,10 @@ const router = createBrowserRouter([
         element: <UpdateJobForm></UpdateJobForm>,
       },
       {
+        path: "/myBids",
+        element: <MyBids></MyBids>,
+      },
+      {
         path: "/login",
         element: <Login></Login>,
       },
