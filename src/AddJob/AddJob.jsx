@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 const AddJob = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  const email = user.email;
+  // const email = user.email;
   const [jobData, setJobData] = useState({
     jobTitle: "",
     deadline: "",
@@ -20,7 +20,7 @@ const AddJob = () => {
     console.log("form submitted");
 
     try {
-      if (user && email) {
+      if (user && user.email) {
         const response = await fetch("http://localhost:5000/job/add", {
           method: "POST",
           headers: {
@@ -50,7 +50,7 @@ const AddJob = () => {
 
   return (
     <div className="max-w-5xl mx-auto my-8 text-center">
-      <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl my-6 md:my-8 lg:my-12">
+      <h1 className="font-bold text-[#86A789] text-2xl md:text-3xl lg:text-4xl my-6 md:my-8 lg:my-12">
         Add Job
       </h1>
 
@@ -61,15 +61,17 @@ const AddJob = () => {
         <div className="mb-4">
           <label className="block text-gray-700">Email of the Employer:</label>
           <input
+            required
             className="input input-bordered w-full max-w-xs"
             type="text"
             readOnly
             value={user?.email}
-          />
+          />{" "}
         </div>
         <div className="mb-4">
           <label className="block text-gray-700">Job Title:</label>
           <input
+            required
             className="input input-bordered w-full max-w-xs"
             type="text"
             value={jobData.jobTitle}
@@ -81,6 +83,7 @@ const AddJob = () => {
         <div className="mb-4">
           <label className="block text-gray-700">Deadline:</label>
           <input
+            required
             className="input input-bordered w-full max-w-xs"
             type="text"
             value={jobData.deadline}
@@ -92,6 +95,7 @@ const AddJob = () => {
         <div className="mb-4">
           <label className="block text-gray-700">Description:</label>
           <textarea
+            required
             className="input input-bordered w-full"
             rows="4"
             value={jobData.description}
@@ -103,6 +107,7 @@ const AddJob = () => {
         <div className="mb-4">
           <label className="block text-gray-700">Category:</label>
           <select
+            required
             className="input input-bordered w-full max-w-xs"
             value={jobData.category}
             onChange={(e) =>
@@ -118,6 +123,7 @@ const AddJob = () => {
         <div className="mb-4">
           <label className="block text-gray-700">Minimum Price:</label>
           <input
+            required
             className="input input-bordered w-full max-w-xs"
             type="text"
             value={jobData.minPrice}
@@ -129,6 +135,7 @@ const AddJob = () => {
         <div className="mb-4">
           <label className="block text-gray-700">Maximum Price:</label>
           <input
+            required
             className="input input-bordered w-full max-w-xs"
             type="text"
             value={jobData.maxPrice}
