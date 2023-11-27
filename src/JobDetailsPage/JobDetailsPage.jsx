@@ -1,4 +1,3 @@
-// import { useParams, useHistory } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -53,16 +52,38 @@ const JobDetails = () => {
 
   return (
     <div className="max-w-5xl mx-auto text-center">
-      <h1 className="text-[#86A789] font-bold text-3xl my-12">Job Details</h1>
-      <h3 className="text-xl font-bold">{jobDetails.jobTitle}</h3>
-      <p className="text-lg font-medium">Deadline: {jobDetails.deadline}</p>
-      <p className="font-semibold">Salary Range: {jobDetails.priceRange}</p>
-      <p className="mb-16">{jobDetails.shortDescription}</p>
-      <h3 className="text-2xl mb-8 font-bold">Place your bid</h3>
-      <form onSubmit={handleBidSubmit}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <label className="">
-            Price:
+      <div className="text-[#86A789]">
+        <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl my-6 md:my-8 lg:my-12">
+          Job Details
+        </h1>
+        <div className="mb-6 md:mb-8 lg:mb-12">
+          <h3 className="text-lg md:text-xl lg:text-2xl font-bold">
+            {jobDetails.jobTitle}
+          </h3>
+          <p className="text-base md:text-lg lg:text-xl font-medium">
+            Deadline: {jobDetails.deadline}
+          </p>
+          <p className="text-base md:text-lg lg:text-xl font-semibold">
+            Salary Range: {jobDetails.priceRange}
+          </p>
+          <p className="text-sm md:text-base lg:text-lg mt-2">
+            {jobDetails.shortDescription}
+          </p>
+        </div>
+        <div className="mb-6 md:mb-8 lg:mb-12">
+          <h2 className="text-lg md:text-xl lg:text-2xl font-bold">
+            Place your bid
+          </h2>
+        </div>
+      </div>
+
+      <form
+        onSubmit={handleBidSubmit}
+        className="max-w-md mx-auto md:max-w-lg lg:max-w-2xl bg-white p-6 rounded-md shadow-md"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="mb-4">
+            <label className="block text-gray-700">Price:</label>
             <input
               className="input input-bordered w-full max-w-xs"
               type="text"
@@ -71,12 +92,10 @@ const JobDetails = () => {
                 setBidData({ ...bidData, price: e.target.value })
               }
             />
-          </label>
-          <br />
-          <label>
-            Deadline:
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700">Deadline:</label>
             <input
-              placeholder="Type here"
               className="input input-bordered w-full max-w-xs"
               type="text"
               value={bidData.deadline}
@@ -84,10 +103,9 @@ const JobDetails = () => {
                 setBidData({ ...bidData, deadline: e.target.value })
               }
             />
-          </label>
-          <br />
-          <label>
-            Email:
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700">Your Email:</label>
             <input
               placeholder="Type here"
               className="input input-bordered w-full max-w-xs"
@@ -95,10 +113,9 @@ const JobDetails = () => {
               readOnly
               value={user.email}
             />
-          </label>
-          <br />
-          <label>
-            Buyer Email:
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700">Buyer Email:</label>
             <input
               placeholder="Type here"
               className="input input-bordered w-full max-w-xs"
@@ -106,17 +123,17 @@ const JobDetails = () => {
               readOnly
               value={jobDetails.ownerEmail}
             />
-          </label>
+          </div>
         </div>
-        <br />
         <button
-          className="btn"
+          className="btn mt-4 w-full"
           type="submit"
           disabled={user.email === jobDetails.ownerEmail}
         >
           Bid on the project
         </button>
       </form>
+
       <ToastContainer />
     </div>
   );
