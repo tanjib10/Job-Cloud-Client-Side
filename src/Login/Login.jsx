@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../Firebase/firebase.config";
+import { Helmet } from "react-helmet";
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 const Login = () => {
@@ -56,6 +57,9 @@ const Login = () => {
   };
   return (
     <div className="my-16" data-aos="fade-up">
+      <Helmet>
+        <title>Job-Cloud | Login</title>
+      </Helmet>
       <h3 className="text-center text-2xl font-bold mb-4">Please Login Here</h3>
       <div className="hero min-h-screen">
         <div className="flex justify-between">

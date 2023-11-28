@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { toast } from "react-toastify";
 
 const BidRequests = () => {
@@ -91,6 +92,9 @@ const BidRequests = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Job-Cloud | Bid Requests</title>
+      </Helmet>
       <h1 className="my-8 text-center font-bold text-3xl text-[#86A789]">
         Bid Requests
       </h1>

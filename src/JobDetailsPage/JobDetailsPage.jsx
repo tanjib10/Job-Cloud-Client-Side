@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext } from "react";
+import { Helmet } from "react-helmet";
 // import { Toast } from "react-toastify/dist/components";
 
 const JobDetails = () => {
@@ -71,6 +72,9 @@ const JobDetails = () => {
 
   return (
     <div className="max-w-5xl mx-auto my-8 text-center">
+      <Helmet>
+        <title>Job-Cloud | Job Details</title>
+      </Helmet>
       <div className="text-[#86A789]">
         <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl my-6 md:my-8 lg:my-12">
           Job Details
@@ -101,6 +105,16 @@ const JobDetails = () => {
         className="max-w-md mx-auto md:max-w-lg lg:max-w-2xl bg-white p-6 rounded-md shadow-md"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="mb-4">
+            <label className="block text-gray-700">Job Title:</label>
+            <input
+              placeholder="Type here"
+              className="input input-bordered w-full max-w-xs"
+              type="text"
+              readOnly
+              value={jobDetails.jobTitle}
+            />
+          </div>
           <div className="mb-4">
             <label className="block text-gray-700">Price:</label>
             <input

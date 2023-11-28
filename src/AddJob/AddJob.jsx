@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 const AddJob = () => {
   const navigate = useNavigate();
@@ -50,6 +51,9 @@ const AddJob = () => {
 
   return (
     <div className="max-w-5xl mx-auto my-8 text-center">
+      <Helmet>
+        <title>Job-Cloud | Add Job</title>
+      </Helmet>
       <h1 className="font-bold text-[#86A789] text-2xl md:text-3xl lg:text-4xl my-6 md:my-8 lg:my-12">
         Add Job
       </h1>

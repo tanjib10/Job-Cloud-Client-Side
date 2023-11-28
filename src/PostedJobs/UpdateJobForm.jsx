@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 const UpdateJobForm = () => {
@@ -64,6 +65,9 @@ const UpdateJobForm = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Job-Cloud | Update Job</title>
+      </Helmet>
       <h1 className="my-8 text-center font-bold text-3xl text-[#86A789]">
         Update Job
       </h1>

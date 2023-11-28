@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -49,6 +50,9 @@ const Register = () => {
   };
   return (
     <div data-aos="fade-down my-12">
+      <Helmet>
+        <title>Job-Cloud | Register</title>
+      </Helmet>
       <h1 className="text-xl my-8 text-center lg:text-3xl font-bold">
         Register
       </h1>

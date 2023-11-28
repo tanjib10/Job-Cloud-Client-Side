@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import JobCard from "./JobCard";
+import { Helmet } from "react-helmet";
 
 const MyPostedJobs = () => {
   const navigate = useNavigate();
@@ -72,6 +73,9 @@ const MyPostedJobs = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Job-Cloud | Posted Jobs</title>
+      </Helmet>
       <h1 className="my-8 text-center font-bold text-3xl text-[#86A789]">
         My Posted Jobs
       </h1>

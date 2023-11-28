@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../Providers/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const MyBids = () => {
   const [myBids, setMyBids] = useState([]);
@@ -58,6 +59,9 @@ const MyBids = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Job-Cloud | My Bids</title>
+      </Helmet>
       <h1 className="my-8 text-center font-bold text-3xl text-[#86A789]">
         My Bids
       </h1>
@@ -77,7 +81,7 @@ const MyBids = () => {
               <td className="py-2 px-4">{bid.jobTitle}</td>
               <td className="py-2 px-4">{bid.bidderEmail}</td>
               <td className="py-2 px-4">{bid.deadline}</td>
-              <td className="py-2 px-4">{bid.status}</td>
+              <td className="py-2 px-4">pending</td>
               <td className="py-2 px-4">
                 {bid.status === "in progress" && (
                   <button
