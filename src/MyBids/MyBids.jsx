@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Helmet } from "react-helmet";
+// import { useParams } from "react-router-dom";
 
 const MyBids = () => {
   const [myBids, setMyBids] = useState([]);
@@ -21,7 +22,6 @@ const MyBids = () => {
         );
         if (response.ok) {
           const data = await response.json();
-          console.log(data);
           setMyBids(data);
         } else {
           console.error("Failed to fetch user bids");
@@ -33,7 +33,7 @@ const MyBids = () => {
     };
     fetchMyBids();
   }, [user]);
-  console.log(myBids);
+
   const handleComplete = async (bidId) => {
     try {
       const response = await fetch(
@@ -46,7 +46,11 @@ const MyBids = () => {
         }
       );
       if (response.ok) {
-        setMyBids((prevBids) => prevBids.filter((bid) => bid._id !== bidId));
+        setMyBids((prevBids) =>
+          prevBids.map((bid) =>
+            bid._id === bidId ? { ...bid, status: "complete" } : bid
+          )
+        );
         toast.success("Bid completed successfully!");
       } else {
         console.error("Failed to complete bid");
@@ -78,11 +82,11 @@ const MyBids = () => {
         <tbody>
           {myBids.map((bid) => (
             <tr key={bid._id} className="border-b border-gray-300">
-              <td className="py-2 px-4">{bid.jobTitle}</td>
-              <td className="py-2 px-4">{bid.bidderEmail}</td>
-              <td className="py-2 px-4">{bid.deadline}</td>
-              <td className="py-2 px-4">pending</td>
-              <td className="py-2 px-4">
+              <td className="py-2 pl-28">Complete Web Development</td>
+              <td className="py-2  pl-16">{bid.bidderEmail}</td>
+              <td className="py-2  pl-16">{bid.deadline}</td>
+              <td className="py-2  pl-16">pending</td>
+              <td className="py-2  pl-28">
                 {bid.status === "in progress" && (
                   <button
                     onClick={() => handleComplete(bid._id)}

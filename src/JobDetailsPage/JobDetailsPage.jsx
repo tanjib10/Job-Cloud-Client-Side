@@ -69,7 +69,6 @@ const JobDetails = () => {
 
     getJobDetails();
   }, [id]);
-
   return (
     <div className="max-w-5xl mx-auto my-8 text-center">
       <Helmet>
@@ -108,11 +107,13 @@ const JobDetails = () => {
           <div className="mb-4">
             <label className="block text-gray-700">Job Title:</label>
             <input
-              placeholder="Type here"
               className="input input-bordered w-full max-w-xs"
               type="text"
               readOnly
               value={jobDetails.jobTitle}
+              onChange={(e) =>
+                setBidData({ ...bidData, title: e.target.value })
+              }
             />
           </div>
           <div className="mb-4">
