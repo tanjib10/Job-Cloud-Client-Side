@@ -18,7 +18,7 @@ const UpdateJobForm = () => {
     const fetchJobData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/job/new/details/${jobId}`
+          `https://job-cloud-server.vercel.app/job/new/details/${jobId}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -40,7 +40,7 @@ const UpdateJobForm = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:5000/job/update/${jobId}`,
+        `https://job-cloud-server.vercel.app/job/update/my/${jobId}`,
         {
           method: "PUT",
           headers: {

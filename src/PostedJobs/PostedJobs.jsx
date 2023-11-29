@@ -12,12 +12,15 @@ const MyPostedJobs = () => {
   useEffect(() => {
     const fetchUserJobs = async () => {
       try {
-        const response = await fetch("http://localhost:5000/job/add", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch(
+          "https://job-cloud-server.vercel.app/job/add",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
         if (response.ok) {
           const data = await response.json();
           setMyJobs(data);
@@ -50,7 +53,7 @@ const MyPostedJobs = () => {
 
       if (isConfirmed.isConfirmed) {
         const response = await fetch(
-          `http://localhost:5000/job/delete/${jobId}`,
+          `https://job-cloud-server.vercel.app/job/delete/${jobId}`,
           {
             method: "DELETE",
             headers: {

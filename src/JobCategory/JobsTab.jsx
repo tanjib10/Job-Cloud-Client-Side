@@ -5,7 +5,9 @@ const JobsTab = ({ category }) => {
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
     const fetchJobsFromMongoDB = async () => {
-      const response = await fetch(`http://localhost:5000/job/${category}`);
+      const response = await fetch(
+        `https://job-cloud-server.vercel.app/job/${category}`
+      );
       const data = await response.json();
       console.log(data);
       setJobs(data);

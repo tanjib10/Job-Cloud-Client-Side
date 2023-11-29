@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Helmet } from "react-helmet";
-// import { useParams } from "react-router-dom";
 
 const MyBids = () => {
   const [myBids, setMyBids] = useState([]);
@@ -12,7 +11,7 @@ const MyBids = () => {
     const fetchMyBids = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/bids/${user.email}`,
+          `https://job-cloud-server.vercel.app/bids/${user.email}`,
           {
             method: "GET",
             headers: {
@@ -20,6 +19,7 @@ const MyBids = () => {
             },
           }
         );
+
         if (response.ok) {
           const data = await response.json();
           setMyBids(data);
@@ -31,29 +31,47 @@ const MyBids = () => {
         toast.error("Error fetching user bids");
       }
     };
+
     fetchMyBids();
   }, [user]);
 
-  const handleComplete = async (bidId) => {
+  const handleComplete = async (bidId, status) => {
     try {
+      let newStatus;
+
+      if (status === "pending") {
+        newStatus = "canceled";
+      } else if (status === "in progress") {
+        newStatus = "complete";
+      } else {
+        console.error("Invalid bid status");
+        return;
+      }
+
       const response = await fetch(
-        `http://localhost:5000/bid/complete/${bidId}`,
+        `https://job-cloud-server.vercel.app/bid/complete/${bidId}`,
         {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
+          body: JSON.stringify({
+            status: newStatus,
+          }),
         }
       );
+
       if (response.ok) {
         setMyBids((prevBids) =>
           prevBids.map((bid) =>
-            bid._id === bidId ? { ...bid, status: "complete" } : bid
+            bid._id === bidId ? { ...bid, status: newStatus } : bid
           )
         );
-        toast.success("Bid completed successfully!");
+
+        toast.success("Bid status updated successfully!");
       } else {
-        console.error("Failed to complete bid");
+        console.error("Failed to update bid status");
+        toast.error("An error occurred while updating bid status");
       }
     } catch (error) {
       console.error("Error completing bid:", error);
@@ -86,15 +104,15 @@ const MyBids = () => {
               <td className="py-2  pl-16">{bid.bidderEmail}</td>
               <td className="py-2  pl-16">{bid.deadline}</td>
               <td className="py-2  pl-16">pending</td>
-              <td className="py-2  pl-28">
-                {bid.status === "in progress" && (
+              <td className="py-2 pl-28">
+                {bid.status === "pending" || bid.status === "in progress" ? (
                   <button
-                    onClick={() => handleComplete(bid._id)}
+                    onClick={() => handleComplete(bid._id, bid.status)}
                     className="bg-[#86A789] text-white px-2 py-1 rounded-md"
                   >
                     Complete
                   </button>
-                )}
+                ) : null}
               </td>
             </tr>
           ))}

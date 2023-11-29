@@ -9,13 +9,16 @@ const BidRequests = () => {
     const fetchBidRequests = async () => {
       try {
         // Make a GET request to fetch bid requests for the logged-in job owner
-        const response = await fetch("http://localhost:5000/bid-requests", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            // Include any authentication headers if needed
-          },
-        });
+        const response = await fetch(
+          "https://job-cloud-server.vercel.app/bid-requests",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              // Include any authentication headers if needed
+            },
+          }
+        );
 
         if (response.ok) {
           const data = await response.json();
@@ -36,7 +39,7 @@ const BidRequests = () => {
     try {
       // Make a PUT request to the server to accept the bid
       const response = await fetch(
-        `http://localhost:5000/bid-requests/accept/${bidId}`,
+        `https://job-cloud-server.vercel.app/bid-requests/accept/${bidId}`,
         {
           method: "PUT",
           headers: {
@@ -65,7 +68,7 @@ const BidRequests = () => {
     try {
       // Make a PUT request to the server to reject the bid
       const response = await fetch(
-        `http://localhost:5000/bid-requests/reject/${bidId}`,
+        `https://job-cloud-server.vercel.app/bid-requests/reject/${bidId}`,
         {
           method: "PUT",
           headers: {

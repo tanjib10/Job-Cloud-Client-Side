@@ -14,7 +14,9 @@ const JobDetails = () => {
   console.log(user);
 
   const fetchJobDetailsById = async (jobId) => {
-    const response = await fetch(`http://localhost:5000/job/details/${jobId}`);
+    const response = await fetch(
+      `https://job-cloud-server.vercel.app/job/details/${jobId}`
+    );
     const data = await response.json();
     return data;
   };
@@ -30,16 +32,19 @@ const JobDetails = () => {
     console.log("submitted");
     try {
       if (user && user.email) {
-        const response = await fetch(`http://localhost:5000/bid/${id}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            ...bidData,
-            bidderEmail: user.email,
-          }),
-        });
+        const response = await fetch(
+          `https://job-cloud-server.vercel.app/bid/${id}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              ...bidData,
+              bidderEmail: user.email,
+            }),
+          }
+        );
 
         if (response.ok) {
           console.log("working");

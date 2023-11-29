@@ -22,16 +22,19 @@ const AddJob = () => {
 
     try {
       if (user && user.email) {
-        const response = await fetch("http://localhost:5000/job/add", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            ...jobData,
-            ownerEmail: user.email,
-          }),
-        });
+        const response = await fetch(
+          "https://job-cloud-server.vercel.app/job/add",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              ...jobData,
+              ownerEmail: user.email,
+            }),
+          }
+        );
         //   const responseData = await response.json();
         if (!response.ok) {
           toast.success("Job added successfully!");
